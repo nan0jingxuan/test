@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<![CDATA[
+<body class="miniweb_body">
+<img src="images/voyager.png">
+]]>
+<header_web>
+	<![CDATA[
+	<header id="header_web">
+		<div class="user_logo"><img alt="" src="{rootPath}/images/voyager.png"><span>{login_user_name}</span></div>
+		<div>彩通农旗微门户</div>
+	</header>
+	]]>
+</header_web>
+<![CDATA[
+<img src="{login_user_logo}">
+]]>
+<app_web>
+	<![CDATA[
+	<aside id="app_web">
+		<dl class="app_native">
+			${app_container}
+		</dl>
+	</aside>
+	]]>
+	<app_a>
+		<![CDATA[
+		<dd><span>微农信</span></dd>
+		]]>
+	</app_a>
+</app_web>
+
+<article id="module_web">
+	<div></div>
+	<div></div>
+</article>
+
+<footer id="bottom_web">
+	<div></div>
+	<div></div>
+</footer>
+
+<nav id="resident_web">
+	<dl>
+		<dd></dd>
+		<dd></dd>
+		<dd></dd>
+		<dd></dd>
+	</dl>
+</nav>
+<![CDATA[
+</body>
+]]>
+</root>

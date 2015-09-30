@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="test">
+    <property environment="env"/>
+    <property name="AFMWeb.location" value="E:/workspace_mars_jee/AFMWeb"/>
+    <property name="ECLIPSE_HOME" value="D:/dev/eclipse_mars_jee/eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="test.classpath">
+        <pathelement location="E:/workspace/AFMWeb/WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
+        <pathelement location="E:/workspace_mars_jee/AFMWeb/WebContent/WEB-INF/lib/httpcore-4.2.4.jar"/>
+        <pathelement location="${AFMWeb.location}/WebContent/WEB-INF/lib/fastjson-1.1.24-20120814.043343-7.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="test.classpath"/>
+        </javac>
+    	<pathconvert property="mf.classpath" pathsep=" ">
+    		<path refid="test.classpath">
+    		</path>
+    	</pathconvert>
+    	<jar destfile="test.jar" basedir="bin">
+    		<manifest>
+    			<attribute name="Main-Class" value="Test"/>
+    			<attribute name="Class-Path" value="${mf.classpath}"/>
+    		</manifest>
+    	</jar>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Test">
+        <java classname="Test" failonerror="true" fork="yes">
+            <classpath refid="test.classpath"/>
+        </java>
+    </target>
+</project>

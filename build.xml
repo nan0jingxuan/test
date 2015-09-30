@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project test with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="E:/workspace_mars_jee"/>
+    <property name="dir.jarfile" value="${dir.buildfile}/jar"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/test.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.jingxuan.util.Test"/>
+                <attribute name="Class-Path" value=". test_lib/dom4j-1.6.1.jar test_lib/fastjson-1.1.24-20120814.043343-7.jar test_lib/httpcore-4.2.4.jar"/>
+            </manifest>
+            <fileset dir="F:/快盘/j2ee/test/bin"/>
+        </jar>
+        <delete dir="${dir.jarfile}/test_lib"/>
+        <mkdir dir="${dir.jarfile}/test_lib"/>
+        <copy file="F:/快盘/j2ee/test/lib/dom4j-1.6.1.jar" todir="${dir.jarfile}/test_lib"/>
+        <copy file="F:/快盘/j2ee/test/lib/fastjson-1.1.24-20120814.043343-7.jar" todir="${dir.jarfile}/test_lib"/>
+        <copy file="F:/快盘/j2ee/test/lib/httpcore-4.2.4.jar" todir="${dir.jarfile}/test_lib"/>
+    </target>
+</project>
