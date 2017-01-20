@@ -90,6 +90,10 @@ public class Test {
 		System.out.println(JSON.toJSONString(map));
 	}
 	
+	private void testRegex(){
+		
+	}
+	
 	public static void main(String[] args) throws Exception{
 		
 		String a = ",11,,";
